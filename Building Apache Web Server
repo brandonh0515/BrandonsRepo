@@ -11,4 +11,4 @@
      systemctl start httpd
      systemctl enable httpd 
 
-The Apache Web Server should be up and running after that
+The Apache Web Server should be up and running after that.
