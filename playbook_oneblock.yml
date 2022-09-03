@@ -1,0 +1,18 @@
+
+- hosts: webservers
+  become: yes
+  roles:
+    - apache
+    - httpd_port
+    - restart_httpd
+    - copy_file
+    - patch
+
+  tasks:
+
+  - name: Ensuring apache is running
+    service:
+       name: httpd
+       state: stopped
+       enabled: yes
+

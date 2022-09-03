@@ -1,0 +1,25 @@
+---
+ - hosts: webservers
+   become: yes
+   vars: 
+     salutations: Installing NFS util
+     pkg: nfs-utils
+     rst: restart nfs
+   
+   tasks:
+   - name: salutations
+     yum:
+       name: "{{ pkg }}"
+       state: installed
+   - name: stopping nfs-utils
+     service:
+       name: "{{ pkg }}"
+       state: stopped
+ 
+     notify:
+       - "{{ rst }}" 
+   handlers:
+   - name: "{{ rst }}"
+     service:
+       name: "{{ pkg }}"
+       state: restart 
